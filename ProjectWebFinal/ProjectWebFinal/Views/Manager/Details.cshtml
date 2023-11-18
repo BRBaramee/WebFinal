@@ -1,0 +1,56 @@
+﻿@model ProjectWebFinal.Models.Manager
+
+@{
+    ViewData["Title"] = "Details";
+        Layout = "~/Views/Shared/_Layout_Movie.cshtml";
+}
+<div class="container">
+    <div class="card-body">
+    <div class="row">
+    <div class="col-6 text-start text-white">
+        <h1>รายละเอียด</h1>
+    </div>
+    <div class="col text-end h4">
+        <a asp-action="Index"><i class="fa-solid fa-arrow-left-long text-white"></i></a>
+    </div>
+</div>
+<br />
+
+<div class="bg-white form-control" >
+    <div class="row bg-dark text-white">
+        <h4>พนักงาน</h4>
+    </div>
+    
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            ชื่อ
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            นามสกุล
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            รหัสผ่าน
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+    </dl>
+</div>
+</div>
+</div>
+
+
+

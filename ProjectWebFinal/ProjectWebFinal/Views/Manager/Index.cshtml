@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ProjectWebFinal.Models.Manager>
+
+@{
+    ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_Layout_Movie.cshtml";
+}
+
+<div class="container">
+    <br />
+
+<h1 class="text-white">รายชื่อพนักงาน</h1>
+<br />
+
+
+<form asp-controller="Manager"  asp-action="Index" method="get">
+    <div  class="row">
+        
+        <div class="col-6 text-start">
+             <a asp-action="Create" class="btn btn-success">เพิ่มพนักงาน</a>
+        </div>
+        <div class="col text-end" >
+            <div class="d-flex">
+                
+                <input type="text" name="SearchText" class="form-control me-1" placeholder="ค้นหาจากชื่อ นามสกุล"/>
+                <input type="submit" value="ค้นหา"  class="btn btn-primary"/>
+            </div>
+             
+        </div>
+       
+    </div>
+</form>
+<br />
+
+
+<table class="table table-light align-middle">
+    <thead class="table-dark">
+        <tr class="text-center">
+            <th>ชื่อ</th>
+            <th>นามสกุล</th>
+            <th>อีเมล</th>
+            <th>จัดการ</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="text-center">
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+
+                @Html.ActionLink("เเก้ไข", "Edit", new {  id=item.Id  },new{@class = "btn btn-secondary"}) 
+                @Html.ActionLink("รายละเอียด", "Details", new { id=item.Id },new{@class = "btn btn-info"}) 
+                @Html.ActionLink("ลบ", "Delete", new { id=item.Id },new{onclick="return confirm('Are you sure want to delete?')",@class = "btn btn-danger"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+</div>

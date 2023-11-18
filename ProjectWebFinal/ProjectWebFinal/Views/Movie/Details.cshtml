@@ -1,0 +1,57 @@
+﻿@model ProjectWebApiFinal.Models.Movie
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout_Movie.cshtml";
+    
+}
+
+
+<div class="container d-flex justity-content-between mt-5">
+    <div class="col-6 text-start text-white">
+        <h5 class="card-title  text-white">รายละเอียดภาพยนต์</h5>
+    </div>
+    <div class="col text-end h4">
+        <a asp-action="Index"><i class="fa-solid fa-arrow-left-long text-white"></i></a>
+    </div>
+</div>
+
+<div class="row align-items-center h-100 mt-5">
+            <div class="col-6 mx-auto">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <div class="card" style="width: 40rem;">
+                            <img src="@Url.Content(Model.Poster)" width="270" height="400" class="card-img-top"/>
+                            <div
+                                class="card-body d-flex flex-column text-start align-items-start justify-content-center" style="background-color: #031D43;">
+                                
+                                <div class="text-white mt-2">
+                                    <dl class="row">
+                                <dt class = "col-sm-10">
+                                    ชื่อเรื่อง
+                                </dt>
+                                <dd class = "col-sm-10">
+                                    - @Html.DisplayFor(model => model.Title)
+                                </dd>
+                               
+                                <dt class = "col-sm-10 mt-1">
+                                    ปีที่เข้าฉาย
+                                </dt>
+                                <dd class = "col-sm-10">
+                                    - @Html.DisplayFor(model => model.Year)
+                                </dd>
+                            </dl>
+
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+
+            </div>
+        </div>
+

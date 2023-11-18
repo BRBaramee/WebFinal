@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProjectWebFinal</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ProjectWebFinal.styles.css" asp-append-version="true" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        .card {
+            flex-direction: row;
+        }
+
+        .card img {
+            height: 400px;
+            width: 270px;
+        }
+    </style>
+</head>
+<body style="background-color:#031633;">
+    @if (User.Identity.IsAuthenticated) {
+
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow text-white" style="background-color:#020E22;">
+        <div class="container my-3">
+            <p class="navbar-brand text-white" style="margin: 0;">ProjectWebFinal</p>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarCollapse" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav mx-3">
+                    <li class="nav-item me-3 nav-link">
+                            <a asp-action="Index" class="text-white" asp-controller="Manager" style="text-decoration: none;">ข้อมูลผู้จัดการ</a>
+
+                    </li>
+                    <li class="nav-item nav-item me-3 nav-link">
+
+                            <a asp-action="Index" class="text-white" asp-controller="Movie" style="text-decoration: none;">ภาพยนตร์</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <div>
+                            <span class="px-2">@User.Identity.Name</span>
+                            <a class="btn btn-outline-danger" asp-action="Logout" asp-controller="Account">ออกจากระบบ</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> 
+    }
+    @RenderBody()
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+        crossorigin="anonymous"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

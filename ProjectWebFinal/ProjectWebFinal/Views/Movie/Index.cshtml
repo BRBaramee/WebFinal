@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ProjectWebApiFinal.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<form asp-controller="Movie"  asp-action="Index" method="get" class=" container fixed-top py-3" style="background-color:#031633;margin-top:89px;">
+    <h1 class="text-white">จัดการข้อมูลภาพยนตร์</h1>
+<br />
+    <div  class="row">
+        
+        <div class="col-6 text-start">
+             <a asp-action="Create" class="btn btn-success">เพิ่มภาพยนตร์เรื่องใหม่</a>
+        </div>
+        <div class="col text-end" >
+            <div class="d-flex">
+                
+                <input type="text" name="SearchText" placeholder="ค้นหาจากชื่อหรือปีที่ฉาย" class="form-control me-1"/>
+                <input type="submit" value="ค้นหา"   class="btn btn-primary"/>
+            </div>
+             
+        </div>
+       
+    </div>
+</form>
+<br />
+
+
+<table class="table table-light align-middle" style="margin-top:207px;">
+    <thead class="table-dark">
+        <tr class="text-center">
+            <th>โปสเตอร์</th>
+            <th>ปีที่ฉาย</th>
+            <th>ชื่อเรื่อง</th>
+            <th>จัดการ</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="text-center">
+            <td>
+                <img src="@Url.Content(item.Poster)" width="135" height="200"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.ActionLink("แก้ไข", "Edit", new {  id=item.Id  },new{@class = "btn btn-secondary"}) 
+                @Html.ActionLink("รายละเอียด", "Details", new { id=item.Id },new{@class = "btn btn-info"}) 
+                @Html.ActionLink("ลบ", "Delete", new { id=item.Id },new{onclick="return confirm('Are you sure want to delete?')",@class = "btn btn-danger"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
